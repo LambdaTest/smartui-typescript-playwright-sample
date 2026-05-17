@@ -1,30 +1,27 @@
-# Run SmartUI TypeScript Playwright Tests on TestMu AI (Formerly LambdaTest)
+# Run SmartUI Visual Tests with Playwright TypeScript on TestMu AI (Formerly LambdaTest)
 
 <p align="center">
   <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
+  <a href="https://www.npmjs.com/package/@playwright/test"><img src="https://img.shields.io/npm/v/@playwright/test.svg?style=for-the-badge&labelColor=000000" alt="Playwright version"></a>
   <a href="https://community.testmuai.com/"><img src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&labelColor=000000" alt="Community"></a>
 </p>
-
-This sample demonstrates how to use TestMu AI (Formerly LambdaTest) Grid for running Playwright tests with TypeScript for SmartUI Visual Regression Testing.
-
-## Prerequisites
-
-- Node.js installed (version 14 or higher)
-- NPM installed (version 7 or higher)
-- A TestMu AI (Formerly LambdaTest) account
 
 ## Getting Started
 
 [TestMu AI](https://www.testmuai.com/) (Formerly LambdaTest) is the world's first full-stack AI Agentic Quality Engineering platform that empowers teams to test intelligently, smarter, and ship faster. Built for scale, it offers a full-stack testing cloud with 10K+ real devices and 3,000+ browsers. With AI-native test management, MCP servers, and agent-based automation, TestMu AI supports Selenium, Appium, Playwright, and all major frameworks.
 
-With TestMu AI (Formerly LambdaTest), you can run SmartUI TypeScript Playwright tests across real browsers and operating systems.
+With TestMu AI (Formerly LambdaTest), you can run SmartUI visual regression tests using Playwright with TypeScript across real browsers and operating systems.
 
 - [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
-- Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/) for the full setup walkthrough.
+- Follow the [TestMu AI documentation](https://www.testmuai.com/support/docs/) (Formerly LambdaTest) for the full setup walkthrough.
 
-Follow the steps below to set up and run the sample project.
+### Prerequisites
 
-### Step 1: Clone the repository
+- Node.js installed (version 14 or higher)
+- NPM installed (version 7 or higher)
+- A TestMu AI (Formerly LambdaTest) account
+
+### Setup
 
 Clone this repository to your local machine.
 
@@ -32,56 +29,72 @@ Clone this repository to your local machine.
 git clone https://github.com/lambdatest/smartui-typescript-playwright-sample.git
 ```
 
-### Step 2: Install dependencies
-
-Navigate to the project directory and install the required dependencies using the following command:
+Navigate to the project directory and install the required dependencies.
 
 ```bash
 cd smartui-typescript-playwright-sample
 npm i
 ```
 
-### Step 3: Set up credentials
+Set your credentials as environment variables.
 
-Set up your TestMu AI (Formerly LambdaTest) username and access key as environment variables.
+**macOS / Linux:**
 
 ```bash
-export LT_USERNAME="your_username"
-export LT_ACCESS_KEY="your_accessKey"
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR_ACCESS_KEY"
 ```
 
-Replace `your_username` and `your_accessKey` with your credentials.
+**Windows:**
 
-### Step 4: SmartUI.takeScreenshot Webhook
+```bash
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+```
 
-In this sample, we have used the `smartui.takeScreenshot` webhook to capture a screenshot for visual regression testing. This webhook triggers a screenshot capture at the specified step in your test script.
+### SmartUI Screenshot Webhook
 
-When you use the `smartui.takeScreenshot` webhook, you can pass additional arguments such as `fullPage` and `screenshotName`. The `fullPage` argument indicates whether the screenshot should capture the entire page or just the viewport. The `screenshotName` argument allows you to provide a custom name for the screenshot. This name is used when saving the screenshot and displaying it in the SmartUI dashboard.
+This sample uses the `smartui.takeScreenshot` webhook to capture screenshots for visual regression testing. When you call this webhook, you can pass additional arguments such as `fullPage` and `screenshotName`. The `fullPage` argument indicates whether the screenshot should capture the entire page or just the viewport. The `screenshotName` argument lets you provide a custom name for the screenshot, which is used when saving it and displaying it in the SmartUI dashboard.
 
-Here's an example of how to use the `smartui.takeScreenshot` webhook in your test script:
+Here is an example of how to use the `smartui.takeScreenshot` webhook in your test script:
 
 ```typescript
 await page.evaluate((_) => { },
     `lambdatest_action: ${JSON.stringify({ action: "smartui.takeScreenshot", arguments: { fullPage: true, screenshotName: "Your Screenshot Name" } })}`);
 ```
 
-This line of code captures a full-page screenshot and saves it with the provided custom name. The captured screenshot will be available for review and comparison in your SmartUI dashboard.
+This captures a full-page screenshot and saves it with the provided custom name. The captured screenshot will be available for review and comparison in your SmartUI dashboard.
 
-By leveraging the `smartui.takeScreenshot` webhook in your test scripts, you can easily capture relevant screenshots at different stages of your test execution. This will help you detect and analyze visual differences across various browser and device combinations, and ensure that your web application looks and functions as expected.
+By leveraging the `smartui.takeScreenshot` webhook at different stages of your test execution, you can detect and analyze visual differences across various browser and device combinations and ensure that your web application looks and functions as expected.
 
-### Step 5: Run the test
-
-Run the test using the following command:
+### Run tests
 
 ```bash
 npm test
 ```
 
-This will execute the test on TestMu AI (Formerly LambdaTest) Grid using Playwright with TypeScript, and SmartUI will capture a screenshot for visual regression testing.
+View results on your TestMu AI dashboard.
 
-## Conclusion
+## Contributions
 
-In this sample project, we demonstrated how to set up and run a SmartUI test using TestMu AI (Formerly LambdaTest) Grid for Playwright with TypeScript. You can now use this setup as a starting point for creating more complex tests and integrating them into your CI/CD pipeline.
+Contributions are welcome. Open an issue to discuss your idea before submitting a pull request. When reporting bugs, include your Node.js version, OS, and Playwright version.
+
+## TestMu AI (Formerly LambdaTest) Community
+
+Connect with testers and developers in the [TestMu AI Community](https://community.testmuai.com/). Ask questions, share what you are building, and discuss best practices in test automation and DevOps.
+
+## TestMu AI (Formerly LambdaTest) Certifications
+
+Earn free [TestMu AI Certifications](https://www.testmuai.com/certifications/) for testers, developers, and QA engineers. Validate your skills in Selenium, Cypress, Playwright, Appium, Espresso and more. Industry-recognized, shareable on LinkedIn, and built by practitioners, not marketers.
+
+## Learning Resources by TestMu AI (Formerly LambdaTest)
+
+Learn modern testing through tutorials, guides, videos, and weekly updates:
+
+* [TestMu AI Blog](https://www.testmuai.com/blog/)
+* [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/)
+* [TestMu AI on YouTube](https://www.youtube.com/@TestMuAI)
+* [TestMu AI Newsletter](https://www.testmuai.com/newsletter/)
 
 ## LambdaTest is Now TestMu AI
 
@@ -89,7 +102,7 @@ On **January 12, 2026**, [LambdaTest evolved to TestMu AI](https://www.testmuai.
 
 Same team. Same infrastructure. Same customer accounts. All existing LambdaTest logins, scripts, capabilities, and integrations continue to work without change.
 
-ð Find the new home for [LambdaTest](https://www.testmuai.com).
+👉 Find the new home for [LambdaTest](https://www.testmuai.com).
 
 ### How LambdaTest Evolved into TestMu AI
 
@@ -97,7 +110,7 @@ In 2017, we launched LambdaTest with a simple mission: make testing fast, reliab
 
 As software development entered the AI era, testing had to evolve, too. We rebuilt the architecture to be AI-native from the ground up, with autonomous agents that **plan, author, execute, analyze, and optimize tests** while keeping humans in the loop. The platform integrates with your repos, CI, IDEs, and terminals, continuously learning from every code change and development signal.
 
-That evolution earned a new name: **TestMu AI**, built for an AI-first future of quality engineering. TestMu is not a new name for us. It is the name of our annual community conference, which has brought together 100,000+ quality engineers to discuss how AI would reshape testing, long before that became an industry norm. 
+That evolution earned a new name: **TestMu AI**, built for an AI-first future of quality engineering. TestMu is not a new name for us. It is the name of our annual community conference, which has brought together 100,000+ quality engineers to discuss how AI would reshape testing, long before that became an industry norm.
 
 What started as a high-performance cloud testing platform has transformed into an AI-native, multi-agent system powering a connected, end-to-end quality layer. That evolution defined a new identity: LambdaTest evolved into TestMu AI, built for an AI-first future of quality engineering.
 
